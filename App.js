@@ -16,14 +16,16 @@ import Router from './src/Router';
 export default class App extends Component<{}> {
   componentWillMount() {
     const config = {
-      apiKey: "AIzaSyCkGNieam-jjtjDMyeBUcl1HP0mo6CT-VA",
-      authDomain: "ion-taxi-91e02.firebaseapp.com",
-      databaseURL: "https://ion-taxi-91e02.firebaseio.com",
-      projectId: "ion-taxi-91e02",
-      storageBucket: "ion-taxi-91e02.appspot.com",
-      messagingSenderId: "736001180248"
+      apiKey: "AIzaSyC1slGKXVFy9DTm9Mwnk7fG9O-rOA-7fNg",
+      authDomain: "poc-realtime-132a6.firebaseapp.com",
+      databaseURL: "https://poc-realtime-132a6.firebaseio.com",
+      projectId: "poc-realtime-132a6",
+      storageBucket: "poc-realtime-132a6.appspot.com",
+      messagingSenderId: "393298275637"
     };
-    firebase.initializeApp(config);
+    if (!firebase.apps.length) {
+      firebase.initializeApp(config);  
+    }
   }
 
   render() { 

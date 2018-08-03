@@ -23,6 +23,7 @@ class EmployeeList extends Component {
 	}
 
 	renderRow(employee) {
+		console.log("list view");
 		return <ListItem employee={employee} />;
 	}
 

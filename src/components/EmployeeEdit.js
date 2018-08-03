@@ -14,8 +14,8 @@ class EmployeeEdit extends Component {
 	}
 
 	onButtonPress() {
-		const { name, phone, shift } = this.props;
-		this.props.employeeSave({ name, phone, shift, uid: this.props.employee.uid });
+		const { name, flag } = this.props;
+		this.props.employeeSave({ name, flag, uid: this.props.employee.uid });
 	}
 
 	onAccept() {
@@ -54,8 +54,8 @@ class EmployeeEdit extends Component {
 }
 
 const mapStateToProps = (state) => {
-	const { name, phone } = state.employeeForm;
-	return { name, phone };
+	const { name, flag } = state.employeeForm;
+	return { name, flag };
 };
 
 export default connect(mapStateToProps, { employeeUpdate, employeeSave, employeeDelete })(EmployeeEdit);
