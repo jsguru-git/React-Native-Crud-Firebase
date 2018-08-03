@@ -24,20 +24,6 @@ class EmployeeForm extends Component {
 					onChangeText={text => this.props.employeeUpdate({ prop: 'phone', value: text })}
 					/>
 				</CardSection>
-				<CardSection>
-					<Text style={styles.pickerTextStyle}>Shift</Text>
-					<Picker
-						style={{ flex: 1 }}
-						selectedValue={this.props.shift}
-						onValueChange={value => this.props.employeeUpdate({ prop: 'shift', value })}>
-						<Picker.Item label="Monday" value="Monday" />
-						<Picker.Item label="Tuesday" value="Tuesday" />
-						<Picker.Item label="Wednesday" value="Wednesday" />
-						<Picker.Item label="Thursday" value="Thursday" />
-						<Picker.Item label="Friday" value="Friday" />
-						<Picker.Item label="Saturday" value="Saturday" />
-					</Picker>
-				</CardSection>
 			</View>
 		);
 	}
@@ -51,8 +37,8 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-	const { name, phone, shift } = state.employeeForm;
-	return { name, phone, shift };
+	const { name, phone } = state.employeeForm;
+	return { name, phone };
 };
 
 export default connect(mapStateToProps, { employeeUpdate })(EmployeeForm);
