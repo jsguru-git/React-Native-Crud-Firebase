@@ -1,27 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { employeeSave } from '../actions';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { CardSection } from './common';
 import CheckBox from 'react-native-check-box';
 
 class ListItem extends Component {
-	onRowPress() {
-		Actions.employeeEdit({ employee: this.props.employee });
-	}
-
 	render() {
-		const { name, flag } = this.props.employee;
+		const { name, flag, uid } = this.props.employee;
 		return (
-			<TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
-				<View>
-					<CheckBox style={styles.titleStyle}
-							leftTextStyle={{fontSize: 18}}
-							leftText={name}
-							isChecked={flag}
-							disabled={true}
-					/>
-				</View>
-			</TouchableWithoutFeedback>
+			<View>
+				<CheckBox style={styles.titleStyle}
+						leftTextStyle={{fontSize: 18}}
+						leftText={name}
+						isChecked={flag}
+						onClick={() => this.props.employeeSave({ name, flag: !flag, uid })}
+				/>
+			</View>
 		);
 	}
 }
@@ -32,4 +28,9 @@ const styles = {
 	}
 }
 
-export default ListItem;
+const mapStateToProps = (state) => {
+	const { name, flag } = state.employeeForm;
+	return { name, flag };
+};
+// export default ListItem;
+export default connect(mapStateToProps, { employeeSave })(ListItem);
